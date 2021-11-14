@@ -143,7 +143,9 @@ def check_folder_structure(args):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--algo', type=str, required=True)
+    parser.add_argument('--algo', type=str,
+                        help="Tells makefile which rule to run (e.g. --algo p1 will trigger rule make run-p1",
+                        required=True)
     parser.add_argument('--task', type=int,
                         help="Task ID (e.g. --task 1 for Max Flow",
                         required=True)
