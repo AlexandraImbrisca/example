@@ -1,0 +1,4 @@
+python3 checker.py --algo ALGO --task TASK
+
+TASK = subject number (e.g. 1 for Max flow)
+ALGO = best/p1/p2 (e.g. ALGO = best calls make run-best)

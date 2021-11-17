@@ -86,9 +86,12 @@ def check_readme(args):
 
 
 def check_tests(args):
-    input_path = Path("./in")
-    output_path = Path("./out")
     tests = []
+    input_path = Path("./in")
+    if args.unique_tests:
+        output_path = Path("./out/{}".format(args.algo))
+    else:
+        output_path = Path("./out")
 
     if not input_path.exists() or not input_path.is_dir():
         logging.critical("No folder for the input tests found!")
@@ -146,10 +149,14 @@ def main():
     parser.add_argument('--algo', type=str,
                         help="Tells makefile which rule to run (e.g. --algo p1 will trigger rule make run-p1",
                         required=True)
+    parser.add_argument('--unique-tests', dest='unique_tests',
+                        help="Set this to True if each algorithm has different tests",
+                        action='store_true')
     parser.add_argument('--task', type=int,
                         help="Task ID (e.g. --task 1 for Max Flow",
                         required=True)
     parser.add_argument('--run-test', type=int)
+    parser.set_defaults(unique_tests=False)
     args = parser.parse_args()
     setup_logging(args)
 

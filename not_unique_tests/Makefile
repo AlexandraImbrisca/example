@@ -34,5 +34,5 @@ algo3_test.o: algo_test.cpp algo3.o
 .PHONY: clean
 
 clean:
-	rm -rf *.o test1 test2 test3
+	rm -rf *.o test1 test2 test3 test.in test.out
 
